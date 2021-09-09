@@ -1,0 +1,52 @@
+{% extends 'Busapp/base.html' %}
+
+{% block content %}
+<div class="container" >
+<form  action="reservations" method="POST">
+  {% csrf_token %}
+  <h1>Reservation</h1>
+
+<!--      <p class="text">
+   You have selected <span id="count" name="no_seats">0</span> seats for a price of <span id="total">0</span>
+  You have selected <button type="integer"  id="count" name="no_seats">0</button> seats-->
+<!--      <span ><input id="count" type="text" placeholder="I'm in a span"></input></span>
+
+
+      <span id="count">0</span>
+  <p id="seatno"></p>
+  <p id="no"></p>
+<!--          <button type="number" name="button" id="count">0</button>
+  </p>-->
+
+<!--  <input type="text" id="username" name="username" placeholder="Enter your username"><br>-->
+  {% for bu in bus %}
+      <input type="hidden"  name="bus_id"  value="{{bu.Bus_ID}}" ><br>
+
+      <label for="time">Departure :</label>
+      <input type="int" id="time" name="time" placeholder="time" value="{{bu.Deap_time}}" disabled><br>
+      <label for="time">Reaching :</label>
+      <input type="int" id="time" name="timeR" placeholder="time" value="{{bu.Reach_time}}" disabled><br>
+
+      <label for="date">Date  :</label>
+      <input type="int" id="date" name="date" value="{{bu.date}}" disabled><br>
+    <!--  <label for="regno"> Reg No.:</label>
+      <input type="number" name="regno" placeholder="Enter bus reg no." value="{{bu.Reg_No}}" disabled><br>-->
+      <label for="number">Seats  :</label>
+      <input type="int" id="count" name="no_seats" placeholder="Enter no of seats" value=""><br>
+      <label for="st">Seat no.:</label>
+      <input type="int" name="st" placeholder="Enter seat no."><br>
+
+      <input type="submit"  value="Submit">
+
+
+
+<!--      <input type="text" name="location" placeholder="Enter Location"><br>
+    <input type="text" name="destination" placeholder="Enter Destination"><br>-->
+  {% endfor %}
+  </form>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'Busapp/data.html' %}
+<!--<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}
+</style>
+  </head>
+  <body>-->
+  {% block content %}
+
+    <div class="container">
+      <h1>Here are the detail about buses ...</h1>
+      <table>
+      <tr style="background-color:#dddddd">
+        <th>Bus_Id</th>
+        <th>Bus</th>
+        <th>BusOwner_ID</th>
+        <th>Reg. No.</th>
+        <th>Location</th>
+        <th>Destination</th>
+        <th>No.of Seats</th>
+        <th>Avai.Seats</th>
+        <th>Status</th>
+        <th>Change the Status!!</th>
+      </tr>
+      {% for bu in bus %}
+      <tr style="background-color:#e7fcc0">
+        <td>{{bu.Bus_ID}}</td>
+        <td>{{bu.Bus_name}}</td>
+        <td>{{bu.BO_ID}}</td>
+        <td>{{bu.Reg_No}}</td>
+        <td>{{bu.Source}}</td>
+        <td>{{bu.Destination}}</td>
+        <td>{{bu.No_Seats}}</td>
+        <td>{{bu.Av_Se}}</td>
+        <td>
+          {% if bu.Status %}
+            Confirmed
+          {% else %}
+            Rejected
+          {% endif %}
+
+        </td>
+        <td>
+      <form  action="buses" method="POST">
+        {% csrf_token %}
+<!--        <select type="text" class="" name="dropdown">
+        <option >True</option>
+        <option >False</option>
+      </select><br>
+        <input type="number"  name="custId"  placeholder="Enter Bus_Id" ><br>
+        <input type="submit" name="" value="Ok"><br> -->
+
+  <!--      <input type="hidden" name="bus_id" value={{bu.Bus_ID}}>
+        <input type="submit" name="status" value="True">
+        <input type="submit" name="status" value="False" >-->
+        {% if bu.Status %}
+        <input type="hidden" name="bus_id" value={{bu.Bus_ID}}>
+        <button type="submit" name="status" value="False" class="btn btn-outline-success" >Reject</button>
+
+        {% else %}
+        <input type="hidden" name="bus_id" value={{bu.Bus_ID}}>
+        <button type="submit" name="status" value="True" class="btn btn-success" >Confirm</button>
+
+        {% endif %}
+
+      </form>
+     </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    </div>
+
+{% endblock %}
+<!--  </body>
+</html>-->

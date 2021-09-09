@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <title></title>
+    <style >
+    body {
+        background-image: url("https://assetsw.bus.com/content/uploads/2018/06/15111829/Coach-Bus-Rentals-1.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    </style>
+  </head>
+  <body style="background-color:#b27df0">
+  <!--  <div class="container">
+      <br>
+
+    <h1> BusOwner Registration Form!!</h1><br>
+    <form  action="register_listbus" method="POST">
+      {%csrf_token %}
+
+      <input type="text" name="first_name" placeholder="First Name" required><br>
+      <input type="text" name="last_name" placeholder="Last Name" required><br>
+      <input type="text" name="username" placeholder="Username" required><br>
+  <!   <input type="email" name="email" placeholder="email"><br>-->
+    <!--  <input type="password" name="password1" placeholder="Password" required><br>
+      <input type="password" name="password2" placeholder="Confirm Password" required><br>
+      <input type="submit" name="" value="Submit">
+
+    </form>
+    <div >
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      {% endfor %}
+    </div>
+  </div>-->
+
+
+   <div id="login" >
+        <h3 class="text-center text-white pt-5"></h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center"  >
+                <div id="login-column" class="col-md-4" style="background-color:#e3e6e5">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="register_listbus" method="post">
+                          {% csrf_token %}
+                            <h3 class="text-center "> BusOwner Registration Form!!</h3>
+                            <div class="form-group">
+                                <label for="first_name" class="">First Name:</label><br>
+                                <input type="text" name="first_name" id="first_name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name" class="">Last Name:</label><br>
+                                <input type="text" name="last_name" id="last_name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password1" class="">Password:</label><br>
+                                <input type="password" name="password1" id="password1" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password2" class="">Password(again):</label><br>
+                                <input type="password" name="password2" id="password2" class="form-control" required>
+                            </div><br>
+                            <div class="form-group">
+
+                                <input type="submit" name="submit" class="form-control btn btn-info btn-md " value="Register" >
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="login_listbus" class="" style="color:#4a718a">Login..</a>
+                            </div>
+                        </form>
+                        {% for message in messages %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          {{message}}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>

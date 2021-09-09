@@ -1,0 +1,112 @@
+{% extends 'Busapp/base.html'%}
+<!--<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}
+</style>
+  </head>
+  <body>-->
+{% block content %}
+
+    <div class="container">
+      <table>
+
+      {% if res %}
+        <h1>Your reservations are...</h1>
+      <tr>
+        <th>Reservation_No. </th>
+        <th>BusRegisNo.</th>
+        <th>Customer_Name</th>
+        <th>Location</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>No.of Seats</th>
+        <th>ViewSeat</th>
+        <th>Cancel</th>
+
+      </tr>
+      {% for re in res %}
+      <tr style="background-color:#e7fcc0">
+
+        <td>{{re.Reg_no}}</td>
+        <td>{{re.Bus_ID.Reg_No}}</td>
+        <td>{{re.Cus_ID.first_name}}</td>
+        <td>{{re.Bus_ID.Source}}</td>
+        <td>{{re.Bus_ID.Destination}}</td>
+        <td>{{re.Bus_ID.date}}</td>
+        <td>{{re.Bus_ID.Deap_time}}</td>
+        <td>{{re.SeatsReser}}</td>
+        <td>
+          <form  action="seatno" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" name="regno" value={{re.Reg_no}}>
+          <button type="submit" name="status" class="btn btn-dark" value="" >Seat</button>
+
+
+        </form>
+        </td>
+        <td>
+          <form  action="delete" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" name="regno" value={{re.Reg_no}}>
+          <input type="hidden" name="seats" value="{{re.SeatsReser}}">
+          <input type="hidden" name="bus_id" value="{{re.Bus_ID}}">
+          <input type="hidden" name="rate" value="{{re.Bus_ID.rate}}">
+          <input type="hidden" name="dtime" value="{{re.Bus_ID.Deap_time}}">
+          <button type="submit" name="status" class="btn btn-dark" value="" >Cancel</button>
+
+
+        </form>
+        </td>
+
+
+
+      </tr>
+      {% endfor %}
+      {% endif %}
+      </table>
+    </div>
+    <p></p>
+    <div class="container">
+    <table align='center'>
+      {% if seat %}
+      <h3>Your seats are..</h3>
+      <tr>
+        <th>Reg_No</th>
+        <th>SeatNo</th>
+
+      </tr>
+    {% for se in seat  %}
+
+      <tr style="background-color:#e7fcc0">
+        <td>{{se.Regno}}</td>
+        <td>{{se.Seat_no}}</td>
+      </tr>
+     {% endfor %}
+     {% endif %}
+
+    </table>
+  </div>
+{% endblock %}
+<!--  </body>
+</html>-->

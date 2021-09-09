@@ -1,0 +1,76 @@
+{% extends 'Busapp/base.html'%}
+
+{% block content %}
+    <h1>Your reservations are...</h1>
+    <div class="container">
+      <table>
+
+
+      <tr>
+        <th>Reservation_No. </th>
+        <th>BusRegisNo.</th>
+        <th>Customer_Name</th>
+        <th>Location</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>No.of Seats</th>
+        <th>ViewSeat</th>
+        <th>Cancel</th>
+
+      </tr>
+      {% for re in res %}
+      <tr>
+
+        <td>{{re.Reg_no}}</td>
+        <td>{{re.Bus_ID.Reg_No}}</td>
+        <td>{{re.Cus_ID.first_name}}</td>
+        <td>{{re.Bus_ID.Source}}</td>
+        <td>{{re.Bus_ID.Destination}}</td>
+        <td>{{re.Bus_ID.date}}</td>
+        <td>{{re.Bus_ID.Deap_time}}</td>
+        <td>{{re.SeatsReser}}</td>
+        <td>
+          <form  action="seatno" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" name="regno" value={{re.Reg_no}}>
+          <button type="submit" name="status" value="" >Seat</button>
+
+
+        </form>
+        </td>
+        <td>
+          <form  action="edit" method="POST">
+          {% csrf_token %}
+
+          <input type="hidden" name="bus_id" value={{bu.Bus_ID}}>
+          <button type="submit" name="status" value="" >Cancel</button>
+
+
+        </form>
+        </td>
+
+
+
+      </tr>
+      {% endfor %}
+      </table>
+    </div>
+    <p></p>
+    <table>
+      <tr>
+        <th>Reg_No</th>
+        <th>SeatNo</th>
+
+      </tr>
+    {% for se in seat  %}
+
+      <tr>
+        <td>{{se.Regno}}</td>
+        <td>{{se.Seat_no}}</td>
+      </tr>
+     {% endfor %}
+
+    </table>
+{% endblock %}

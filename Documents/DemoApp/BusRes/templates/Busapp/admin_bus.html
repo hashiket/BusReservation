@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Admin </title>
+    <link rel="stylesheet"
+         href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+ </script>
+   <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+   </script>
+   <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+   </script>
+    <style media="screen">
+    body {
+        background-image: url("https://assetsw.bus.com/content/uploads/2018/06/15111829/Coach-Bus-Rentals-1.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    </style>
+  </head>
+  <body >
+
+
+    <!--
+
+      <div class="container">
+
+
+          <form  action="admin_bus" method="POST">
+              {% csrf_token %}
+              <h1>Admin Login!!</h1><br>
+              <input type="text" name="username"  placeholder="Username"><br>
+              <input type="password" name="password" placeholder="password"><br>
+              <input type="submit"  value="Submit">
+          </form>
+
+          <div >
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+            {% endfor %}
+          </div>
+        </div>-->
+
+
+        <div id="login" >
+             <h3 class="text-center text-white pt-5"></h3>
+             <div class="container">
+                 <div id="login-row" class="row justify-content-center align-items-center"  >
+                     <div id="login-column" class="col-md-4" style="background-color:#e3e6e5">
+                         <div id="login-box" class="col-md-12">
+                             <form id="login-form" class="form" action="admin_bus" method="post">
+                               {% csrf_token %}
+                                 <h3 class="text-center ">Login</h3>
+                                 <div class="form-group">
+                                     <label for="username" class="">Username:</label><br>
+                                     <input type="text" name="username" id="username" class="form-control">
+                                 </div>
+                                 <div class="form-group">
+                                     <label for="password" class="">Password:</label><br>
+                                     <input type="password" name="password" id="password" class="form-control">
+                                 </div>
+                                 <div class="form-group ">
+                                     <label for="remember-me" class=""><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                     <input type="submit" name="submit" class="form-control btn btn-info btn-md" value="Login">
+                                 </div>
+                                 <br>
+                             </form>
+                             {% for message in messages %}
+                             <div class="alert alert-warning alert-dismissible fade show" role="alert" style="background-color:#fccccc">
+                               {{message}}
+                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                               </button>
+                             {% endfor %}
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+  </body>
+</html>

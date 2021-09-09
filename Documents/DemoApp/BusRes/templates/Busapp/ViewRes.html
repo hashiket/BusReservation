@@ -1,0 +1,44 @@
+{% extends 'Busapp/listbus.html' %}
+{% block content %}
+
+    <div class="container">
+      <h1>Your reservations </h1>
+      <table>
+
+      {% if res %}
+      <tr>
+        <th>Reservation_No. </th>
+        <th>BusRegisNo.</th>
+        <th>Customer_Name</th>
+        <th>Location</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Departure</th>
+        <th>Reaching</th>
+        <th>No.of Seats</th>
+      </tr>
+
+      {% for re in res %}
+      <tr style="background-color:#e7fcc0">
+
+        <td>{{re.Reg_no}}</td>
+        <td>{{re.Bus_ID.Reg_No}}</td>
+        <td>{{re.Cus_ID.first_name}}</td>
+        <td>{{re.Bus_ID.Source}}</td>
+        <td>{{re.Bus_ID.Destination}}</td>
+        <td>{{re.Bus_ID.date}}</td>
+        <td>{{re.Bus_ID.Deap_time}}</td>
+        <td>{{re.Bus_ID.Reach_time}}</td>
+        <td>{{re.SeatsReser}}</td>
+
+      </tr>
+
+      {% endfor %}
+      {% else %}
+      <th>No data..</th>
+      {% endif %}
+      </table>
+    </div>
+    <p></p>
+
+{% endblock %}
